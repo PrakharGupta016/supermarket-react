@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import Login from './Pages/login'
+import ProductDetails from './Pages/productdetails';
+import Home from './Pages/Home';
+import Cart from './Pages/Cart';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App />  */}
+    {/* <Cart/> */}
+    <ProductDetails/>
+
   </React.StrictMode>
 );
 
