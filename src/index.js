@@ -1,19 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Login from './Pages/login'
-import ProductDetails from './Pages/productdetails';
-import Home from './Pages/Home';
-import Cart from './Pages/Cart';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Login from "./Pages/login";
+import ProductDetails from "./Pages/productdetails";
+import Home from "./Pages/Home";
+import Cart from "./Pages/Cart";
+import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "./contexts/userContext";
+import { ProductsProvider } from "./contexts/porductsContext";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <App />  */}
-    {/* <Cart/> */}
-    <ProductDetails/>
-
+    <BrowserRouter>
+    <UserProvider>
+      <ProductsProvider>
+      <App /> 
+      {/* <Cart/> */}
+      {/* <ProductDetails /> */}
+      </ProductsProvider>
+      </UserProvider>
+    </BrowserRouter>
+  
   </React.StrictMode>
 );
 

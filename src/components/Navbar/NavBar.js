@@ -14,8 +14,8 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav >
-            <Nav.Link href="#home">LOGO</Nav.Link>
-            <Nav.Link href="#link" >Link</Nav.Link>
+            <Nav.Link href="/">LOGO</Nav.Link>
+            <Nav.Link href="" >Link</Nav.Link>
             <Form className="d-flex ">
                   <Form.Control
                     type="search"
@@ -25,7 +25,7 @@ function NavBar() {
                   />
                   <Button variant="outline-success">Search</Button>
                 </Form>
-            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
 
             
           </Nav>
