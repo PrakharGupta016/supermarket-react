@@ -10,6 +10,10 @@ import Cart from "./Pages/Cart";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/userContext";
 import { ProductsProvider } from "./contexts/porductsContext";
+import Checkout from "./components/Checkout/Checkout";
+import CheckoutPage from "./Pages/CheckoutPage";
+import AdminHome from "./Pages/AdminHome";
+import AdminCategory from "./Pages/AdminCategory";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -19,6 +23,9 @@ root.render(
       <App /> 
       {/* <Cart/> */}
       {/* <ProductDetails /> */}
+        {/* <CheckoutPage/> */}
+        {/* <AdminCategory/> */}
+        {/* <AdminHome/> */}
       </ProductsProvider>
       </UserProvider>
     </BrowserRouter>

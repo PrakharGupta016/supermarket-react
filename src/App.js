@@ -8,6 +8,7 @@ import Home from './Pages/Home';
 import Login from './Pages/login';
 import SignUp from './Pages/SignUp';
 import WalletPage from './Pages/WalletPage';
+import ProductDetails from './Pages/productdetails';
 
 
 
@@ -19,6 +20,7 @@ function App() {
     <Route path = '/login' element={<Login/>}/>
     <Route path ='/signup' element={<SignUp/>}/>
     <Route path ='/wallet' element={<WalletPage/>}/>
+    <Route path = '/productdetails' element={<ProductDetails/>}/>
    </Routes>
   );
 }

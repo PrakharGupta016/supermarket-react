@@ -1,23 +1,23 @@
 import Carousel from 'react-bootstrap/Carousel';
-
-function UncontrolledExample() {
+import './Carousel.css';
+function CustomCaro() {
   return (
-    <Carousel>
+    <Carousel >
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
+          src={require('../../images/tomato.png')}
           alt="First slide"
         />
-        <Carousel.Caption>
+        <Carousel.Caption className='d-flex flex-column'>
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
+          className="d-block w-100 "
+          src={require('../../images/tomato.png')}
           alt="Second slide"
         />
 
@@ -29,7 +29,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          src={require('../../images/tomato.png')}
           alt="Third slide"
         />
 
@@ -44,4 +44,4 @@ function UncontrolledExample() {
   );
 }
 
-export default UncontrolledExample;
+export default CustomCaro;

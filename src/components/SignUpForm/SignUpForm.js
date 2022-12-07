@@ -1,32 +1,39 @@
 
 import React, { useState,useContext} from 'react'
 import { Button, FormCheck,Form } from 'react-bootstrap'
+import { json } from 'react-router-dom';
 import { UserContext } from '../../contexts/userContext';
 const defaultFormFields = {
-  displayName: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
-  confirmPassword: '',
 };
-
+const url = 'http://localhost:8080/api/users/';
 
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
-  const {setCurrentUser} = useContext(UserContext);
+  const { first_name, last_name, email, password } = formFields;
+  // const {setCurrentUser} = useContext(UserContext);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
+ 
     event.preventDefault();
-
-    try {
-      // await signInAuthUserWithEmailAndPassword(email, password);
-      // setCurrentUser(user);
-      resetFormFields();
-    } catch (error) {
-      console.log('user sign in failed', error);
-    }
+    console.log(formFields);
+    // try {
+    //   // await signInAuthUserWithEmailAndPassword(email, password);
+    //   // setCurrentUser(user);
+    //   resetFormFields();
+    // } catch (error) {
+    //   console.log('user sign in failed', error);
+    // }
+    fetch(url,{
+      method:'POST',
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(formFields)
+    }).then((res)=>json(res)).then(res=>console.log(res));
   };
 
 const handleChange = (event) => {
@@ -36,14 +43,15 @@ const handleChange = (event) => {
   };
   return (
     <div className='mx-auto w-25 mt-5'>
-      <Form>
+      <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formPlaintext">
-          <Form.Label className="w-100 mx-auto">User Name</Form.Label>
+          <Form.Label className="w-100 mx-auto">First Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter name"
-            name="name"
-            value={displayName}
+            placeholder="Enter First name"
+            name="first_name"
+            onChange={handleChange}
+            value={first_name}
           />
           <Form.Text className="text-muted">
         
@@ -51,37 +59,44 @@ const handleChange = (event) => {
         </Form.Group>
 
         
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label className="w-100 mx-auto">Email address</Form.Label>
+        <Form.Group className="mb-3" controlId="formPlaintext">
+          <Form.Label className="w-100 mx-auto">Last Name</Form.Label>
           <Form.Control
-            type="email"
-            placeholder="Enter email"
+            type="text"
+            placeholder="Enter Last Name"
+            name="last_name"
+            onChange={handleChange}
+            value={last_name}
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+        
+        <Form.Group className="mb-3" controlId="formPlainEmail">
+          <Form.Label className="w-100 mx-auto">Last Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Last Name"
             name="email"
+            onChange={handleChange}
             value={email}
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
             name="password"
+            onChange={handleChange}
             value={password}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={password}
-          />
-        </Form.Group>
+        
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           {/* <Form.Check type="checkbox" label="Check me out" /> */}
         </Form.Group>

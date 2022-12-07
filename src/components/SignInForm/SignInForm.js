@@ -1,30 +1,35 @@
 import React, { useState,useContext} from 'react'
 import { Button, FormCheck,Form } from 'react-bootstrap'
+import { json } from 'react-router-dom';
 import { UserContext } from '../../contexts/userContext';
 const defaultFormFields = {
-  displayName: '',
-  email: '',
+
+  username: '',
+  password:''
  
 };
-
-const CustomForm = () => {
+const url = 'http://localhost:8080/api/v1/auth/login';
+const SignInForm = () => {
 
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
-  const {setCurrentUser} = useContext(UserContext);
+  const { username, password } = formFields;
+  // const {setCurrentUser} = useContext(UserContext);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit =  (event) => {
 
-    try {
-      // await signInAuthUserWithEmailAndPassword(email, password);
-      // setCurrentUser(user);
-      resetFormFields();
-    } catch (error) {
-      console.log('user sign in failed', error);
-    }
+    event.preventDefault();
+    console.log(formFields);
+    fetch(url,{
+      method:'POST',
+      headers:{  'Accept': 'application/json',
+      'Content-Type': 'application/json',},
+      body:JSON.stringify(formFields)
+    }).then(response => response.json())
+    .then(responseJson => localStorage.setItem('token',responseJson.token));
+
+    
   };
 
 const handleChange = (event) => {
@@ -35,12 +40,12 @@ const handleChange = (event) => {
     
   return (
     <div>
-      <Form >
+      <Form onSubmit={handleSubmit}>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className="w-100 mx-auto">Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email"  name='email'
-          value={email}/>
+          <Form.Control type="email" placeholder="Enter email"  name='username'
+          value={username} onChange={handleChange}/>
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -48,7 +53,7 @@ const handleChange = (event) => {
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password"  name='password' value={password}/>
+          <Form.Control type="password" placeholder="Password"  name='password' value={password} onChange={handleChange}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           {/* <Form.Check type="checkbox" label="Check me out" /> */}
@@ -61,4 +66,4 @@ const handleChange = (event) => {
   )
 }
 
-export default CustomForm;
+export default SignInForm;
