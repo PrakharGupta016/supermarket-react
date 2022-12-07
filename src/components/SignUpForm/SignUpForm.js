@@ -9,7 +9,7 @@ const defaultFormFields = {
   email: '',
   password: '',
 };
-const url = 'http://localhost:8080/api/users/';
+const url = 'http://localhost:8080/api/v1/auth/register';
 
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
@@ -77,7 +77,7 @@ const handleChange = (event) => {
           <Form.Label className="w-100 mx-auto">Last Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Last Name"
+            placeholder="Enter Email"
             name="email"
             onChange={handleChange}
             value={email}
