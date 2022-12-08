@@ -1,7 +1,7 @@
 
 import React, { useState,useContext} from 'react'
 import { Button, FormCheck,Form } from 'react-bootstrap'
-import { json } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/userContext';
 const defaultFormFields = {
   first_name: '',
@@ -74,7 +74,7 @@ const handleChange = (event) => {
         </Form.Group>
         
         <Form.Group className="mb-3" controlId="formPlainEmail">
-          <Form.Label className="w-100 mx-auto">Last Name</Form.Label>
+          <Form.Label className="w-100 mx-auto">Email</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Email"
@@ -100,9 +100,10 @@ const handleChange = (event) => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           {/* <Form.Check type="checkbox" label="Check me out" /> */}
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className='d-flex'>
           Submit
         </Button>
+        <Link to='/login' >login</Link>
       </Form>
     </div>
   );

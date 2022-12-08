@@ -1,39 +1,49 @@
 import React from 'react'
-import { useEffect } from 'react';
-import { Card } from 'react-bootstrap'
-import { Col, Image, Row } from "react-bootstrap"
+import { useEffect,useState } from 'react';
+
  import './itemCard.css';
- var product = [{
-  name : 'tomato',
-  price : 133,
+//  var product = [{
+//   name : 'tomato',
+//   price : 133,
 
- },
- {
-  name : 'tomato',
-  price : 133,
+//  },
+//  {
+//   name : 'tomato',
+//   price : 133,
 
- },
- {
-  name : 'tomato',
-  price : 133,
+//  },
+//  {
+//   name : 'tomato',
+//   price : 133,
 
- },
- {
-  name : 'tomato',
-  price : 133,
+//  },
+//  {
+//   name : 'tomato',
+//   price : 133,
 
- },
- {
-  name : 'tomato',
-  price : 133,
+//  },
+//  {
+//   name : 'tomato',
+//   price : 133,
 
- },
- {
-  name : 'tomato',
-  price : 133,
+//  },
+//  {
+//   name : 'tomato',
+//   price : 133,
 
- },]
+//  },]
+
 const ItemCard = () => {
+  const[product,setProduct] = useState([]);
+  // const val = localStorage.getItem("token");
+  // const token = JSON.parse(val);
+  useEffect(()=>{
+      fetch('http://localhost:8080/api/product/',{
+        method:'GET',
+        // headers:{"Authorization" : `Bearer ${token}`}
+      }).then(res=>(res.json()).then(res=>setProduct(res)))
+  },[])
+
   return (
     
 

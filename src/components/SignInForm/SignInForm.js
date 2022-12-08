@@ -1,6 +1,6 @@
 import React, { useState,useContext} from 'react'
 import { Button, FormCheck,Form } from 'react-bootstrap'
-import { json } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/userContext';
 const defaultFormFields = {
 
@@ -13,6 +13,7 @@ const SignInForm = () => {
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { username, password } = formFields;
+  const [ok,setok] = useState(0);
   // const {setCurrentUser} = useContext(UserContext);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -26,8 +27,18 @@ const SignInForm = () => {
       headers:{  'Accept': 'application/json',
       'Content-Type': 'application/json',},
       body:JSON.stringify(formFields)
-    }).then(response => response.json())
-    .then(responseJson => localStorage.setItem('token',responseJson.token));
+    }).then(response => {if(response.ok){
+      response.json().then(responseJson =>{
+        localStorage.setItem('token',(responseJson.token))
+        setok(1)
+      });
+    }
+    else{
+      alert('incoorest cred')
+    }
+  })
+
+    
 
     
   };
@@ -58,9 +69,12 @@ const handleChange = (event) => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           {/* <Form.Check type="checkbox" label="Check me out" /> */}
         </Form.Group>
-        <Button variant="primary" type="submit">
+
+       {ok?<Link to='/'> <Button variant="primary" type="submit">
           Submit
-        </Button>
+        </Button></Link>:<Button variant="primary" type="submit">
+          Submit
+        </Button>};
       </Form>
     </div>
   )

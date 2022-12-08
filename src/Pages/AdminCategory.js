@@ -1,13 +1,12 @@
 import React from 'react'
-import AddCategory from '../components/Admin/AddCategory'
+import AdminCategoryList from '../components/Admin/AdminCategoryList'
 import NavBar from '../components/Navbar/NavBar'
 
 const AdminCategory = () => {
   return (
     <div>
-       <NavBar/>
-       <AddCategory/>
-      
+      <NavBar/>
+      <AdminCategoryList/>
     </div>
   )
 }

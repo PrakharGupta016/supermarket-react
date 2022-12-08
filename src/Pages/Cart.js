@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 import CartItem from '../components/Cart/Cart';
 import NavBar from '../components/Navbar/NavBar';
 

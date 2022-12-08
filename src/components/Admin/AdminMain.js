@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './AdminMain.css'
 const AdminMain = () => {
   return (
@@ -13,7 +14,7 @@ const AdminMain = () => {
         <div className=' bottomContainer w-50 d-flex flex-column justify-content-center align-items-center'>
           <h3>CATEGORIES</h3>
           <p>Manage all the categories here</p>
-          <Button >MANAGE</Button>
+          <Link to='/admin-product'><Button >MANAGE</Button></Link>
         </div>
         <div className=' bottomContainer w-50 d-flex flex-column justify-content-center align-items-center'>
           <h3>PRODUCTS</h3>

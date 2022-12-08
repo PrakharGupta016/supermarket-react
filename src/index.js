@@ -14,6 +14,9 @@ import Checkout from "./components/Checkout/Checkout";
 import CheckoutPage from "./Pages/CheckoutPage";
 import AdminHome from "./Pages/AdminHome";
 import AdminCategory from "./Pages/AdminCategory";
+import AdminProduct from "./Pages/AdminProduct";
+import AdminCategoryForm from "./Pages/AdminCategoryForm";
+import ProductListing from "./Pages/ProductListing";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -21,11 +24,15 @@ root.render(
     <UserProvider>
       <ProductsProvider>
       <App /> 
+      {/* <ProductListing/> */}
       {/* <Cart/> */}
       {/* <ProductDetails /> */}
         {/* <CheckoutPage/> */}
         {/* <AdminCategory/> */}
         {/* <AdminHome/> */}
+
+        {/* <AdminProduct/> */}
+        {/* <AdminCategory/> */}
       </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
