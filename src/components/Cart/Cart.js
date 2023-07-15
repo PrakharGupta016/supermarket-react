@@ -14,7 +14,15 @@ var item = [
   },
 ];
 
+
 const CartItem = () => {
+  const token = localStorage.getItem('token');
+
+  useEffect(()=>{
+    fetch('http://localhost:8080/api/cart/?token='+token)
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+  },[])
   const oninc =(id)=>{
     
 

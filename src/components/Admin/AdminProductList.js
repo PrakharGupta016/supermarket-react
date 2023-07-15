@@ -21,12 +21,12 @@ const AdminProductList = () => {
   const removeProduct = (obj,product) => {
     const id = obj.id
     
-      // fetch("http://localhost:8080/api/product/delete/"+id,{
-      //   method:'DELETE',
+      fetch("http://localhost:8080/api/product/delete/1",{
+        method:'DELETE',
 
-      // }).then((res)=>res.json()).then(()=>{
+      }).then((res)=>res.json()).then(()=>{
         
-        setProduct(product.filter((c) => c.id !== id));
+        setProduct(product.filter((c) => c.id !== id))});
        
       
 

@@ -10,15 +10,12 @@ const AdminCategoryList = () => {
 
 
 
-        // fetch(url,{
-        //   method:'DELETE',
-        // //   headers: {
-        // //         "Authorization" : auth,
-        // // }
-          
-        // }).then(()=>{
+        fetch(url,{
+          method:'DELETE',
+        
+        }).then(()=>{
             setCategory(categories.filter((c) => c.categoryId !== id));
-        // }).catch(err=>console.log(err))
+        }).catch(err=>console.log(err))
     }
     useEffect(()=>{
         fetch("http://localhost:8080/api/categories/",{

@@ -4,6 +4,7 @@ import CartItem from '../components/Cart/Cart';
 import NavBar from '../components/Navbar/NavBar';
 
 const Cart = () => {
+  
   return (
     <div>
        <NavBar/>
